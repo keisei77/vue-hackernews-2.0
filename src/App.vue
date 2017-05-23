@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <div class="header">
-      <div class="inner">
+    <header class="header">
+      <nav class="inner">
         <router-link to="/" exact>
           <img class="logo" src="~public/logo-48.png" alt="logo">
         </router-link>
@@ -10,11 +10,11 @@
         <router-link to="/show">Show</router-link>
         <router-link to="/ask">Ask</router-link>
         <router-link to="/job">Jobs</router-link>
-        <a class="github" href="https://github.com/vuejs/vue-hackernews-2.0" target="_blank">
+        <a class="github" href="https://github.com/vuejs/vue-hackernews-2.0" target="_blank" rel="noopener">
           Built with Vue.js
         </a>
-      </div>
-    </div>
+      </nav>
+    </header>
     <transition name="fade" mode="out-in">
       <router-view class="view"></router-view>
     </transition>
@@ -92,8 +92,6 @@ a
     padding 15px 30px
 
 @media (max-width 600px)
-  body
-    font-size 14px
   .header
     .inner
       padding 15px
