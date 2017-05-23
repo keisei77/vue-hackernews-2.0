@@ -7,6 +7,7 @@ Vue.use(Router)
 const createListView = id => () => import('../views/CreateListView').then(m => m.default(id))
 const ItemView = () => import('../views/ItemView.vue')
 const UserView = () => import('../views/UserView.vue')
+const GalleryView = () => import('../views/GalleryView.vue')
 
 export function createRouter () {
   return new Router({
@@ -20,7 +21,8 @@ export function createRouter () {
       { path: '/job/:page(\\d+)?', component: createListView('job') },
       { path: '/item/:id(\\d+)', component: ItemView },
       { path: '/user/:id', component: UserView },
-      { path: '/', redirect: '/top' }
+      { path: '/', redirect: '/top' },
+      { path: '/gallery', component: GalleryView }
     ]
   })
 }

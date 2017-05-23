@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <!--
     <header class="header">
       <nav class="inner">
         <router-link to="/" exact>
@@ -15,9 +16,12 @@
         </a>
       </nav>
     </header>
+    -->
     <transition name="fade" mode="out-in">
       <router-view class="view"></router-view>
     </transition>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.14.1/lodash.min.js"></script>
   </div>
 </template>
 
@@ -27,7 +31,6 @@ body
   font-size 15px
   background-color lighten(#eceef1, 30%)
   margin 0
-  padding-top 55px
   color #34495e
   overflow-y scroll
 
