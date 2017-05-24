@@ -16,7 +16,7 @@ export default function createList () {
     render: function (h) {
       if (this.items.length) {
         let self = this.$parent
-        return h('ul', this.items.map(function (item) {
+        return h('ul', this.items.map((item) => {
           return h('li', {
             domProps: {
               innerHTML: self.textValue

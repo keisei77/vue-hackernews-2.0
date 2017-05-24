@@ -56,21 +56,38 @@
         v-bind:data-index="index"
       >{{ item.msg }}</li>
     </transition-group>-->
-    <render-comp :text="textValue"></render-comp>
+    <list :text="textValue"></list>
+    <gallery :items="galleryItems" :isOrdered="true"></gallery>
+    <new-list :items="galleryItems" :isOrdered="true"></new-list>
   </div>
 </template>
 
 <script>
-import List from '../components/List'
+import CreateList from '../components/List'
+import CreateNewList from '../components/NewList'
 
 export default {
   data () {
     return {
-      textValue: 'Hello world!'
+      textValue: 'Hello world!',
+      galleryItems: [1, 2, 3, 4]
     }
   },
   components: {
-    renderComp: List()
+    List: CreateList(),
+    NewList: CreateNewList(),
+    gallery: {
+      // functional: true,
+      props: {
+        items: {
+          type: Array,
+          required: true
+        },
+        isOrdered: Boolean
+      },
+      render (h) {
+      }
+    }
   }
   // data () {
   //   return {
