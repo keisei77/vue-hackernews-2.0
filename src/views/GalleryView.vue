@@ -56,6 +56,7 @@
         v-bind:data-index="index"
       >{{ item.msg }}</li>
     </transition-group>-->
+    <div v-demo:hello.a.b="message"></div>
     <list :text="textValue"></list>
     <gallery :items="galleryItems" :isOrdered="true"></gallery>
     <new-list :items="galleryItems" :isOrdered="true"></new-list>
@@ -63,6 +64,7 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import CreateList from '../components/List'
 import CreateNewList from '../components/NewList'
 
@@ -70,8 +72,12 @@ export default {
   data () {
     return {
       textValue: 'Hello world!',
-      galleryItems: [1, 2, 3, 4]
+      galleryItems: [1, 2, 3, 4],
+      message: 'he1llo'
     }
+  },
+  mounted: function () {
+    console.log(Vue.config)
   },
   components: {
     List: CreateList(),
@@ -86,6 +92,20 @@ export default {
         isOrdered: Boolean
       },
       render (h) {
+      }
+    }
+  },
+  directives: {
+    demo: {
+      bind: function (el, binding, vnode) {
+        let s = JSON.stringify
+        el.innerHTML =
+          'name: ' + s(binding.name) + '<br>' +
+          'value: ' + s(binding.value) + '<br>' +
+          'expression: ' + s(binding.expression) + '<br>' +
+          'argument: ' + s(binding.arg) + '<br>' +
+          'modifiers: ' + s(binding.modifiers) + '<br>' +
+          'vnode keys: ' + Object.keys(vnode).join(', ')
       }
     }
   }
