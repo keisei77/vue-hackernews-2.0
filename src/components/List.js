@@ -15,14 +15,22 @@ export default function createList () {
     },
     render: function (h) {
       if (this.items.length) {
-        let self = this.$parent
-        return h('ul', this.items.map((item) => {
-          return h('li', {
-            domProps: {
-              innerHTML: self.textValue
+        return h(
+          'ul',
+          {
+            'class': {
+              'list-hello': true,
+              'list-hi': true
             }
-          }, item.name)
-        }))
+          },
+          this.items.map((item) => {
+            return h('li', {
+              domProps: {
+                innerHTML: this.text
+              }
+            }, item.name)
+          })
+        )
       } else {
         return h('p', 'No items found.')
       }

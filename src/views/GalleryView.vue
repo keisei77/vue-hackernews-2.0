@@ -59,7 +59,7 @@
     <div v-demo:hello.a.b="message"></div>
     <list :text="textValue"></list>
     <gallery :items="galleryItems" :isOrdered="true"></gallery>
-    <new-list :items="galleryItems" :isOrdered="true"></new-list>
+    <new-list :items="newGalleryItems" :isOrdered="true"></new-list>
   </div>
 </template>
 
@@ -73,11 +73,11 @@ export default {
     return {
       textValue: 'Hello world!',
       galleryItems: [1, 2, 3, 4],
-      message: 'he1llo'
+      message: 'he1llo',
+      newGalleryItems: [2, 3, 4]
     }
   },
   mounted: function () {
-    console.log(Vue.config)
   },
   components: {
     List: CreateList(),
@@ -92,6 +92,18 @@ export default {
         isOrdered: Boolean
       },
       render (h) {
+        return h(
+          'ul',
+          {
+            'class': {
+              hello: true,
+              hi: true
+            }
+          },
+          this.items.map((item) => {
+            return h('li', item)
+          })
+        )
       }
     }
   },
