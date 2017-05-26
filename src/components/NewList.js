@@ -6,8 +6,26 @@ export default function createNewList () {
       let lists = context.props.items.map((item) => {
         return <li>{item}</li>
       })
+
+      const showClazz =  () => {
+        return false
+      }
+
+      const data = {
+        class: [
+          'new-list-hello',
+          'new-list-hi',
+          {
+            'show-class': showClazz()
+          }
+        ],
+        style: {
+          'color': 'red'
+        }
+      }
+
       return (
-        <ul class="new-list-hello new-list-hi">
+        <ul {...data}>
           {lists}
         </ul>
       )

@@ -13,6 +13,11 @@ export default function createList () {
         type: String
       }
     },
+    computed: {
+      showList () {
+        return true
+      }
+    },
     render: function (h) {
       if (this.items.length) {
         return h(
@@ -20,7 +25,8 @@ export default function createList () {
           {
             'class': {
               'list-hello': true,
-              'list-hi': true
+              'list-hi': true,
+              'show-list': this.showList
             }
           },
           this.items.map((item) => {
